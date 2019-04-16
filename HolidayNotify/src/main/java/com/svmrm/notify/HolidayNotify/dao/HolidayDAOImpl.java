@@ -11,8 +11,11 @@ import com.svmrm.notify.HolidayNotify.model.HolidayMaster;
 
 public class HolidayDAOImpl implements HolidayDAO {
 		
-		@Autowired
 		private JdbcTemplate jdbcTemplate;
+
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+			this.jdbcTemplate = jdbcTemplate;
+		}
 
 	public JdbcTemplate getJdbcTemplate() {
 			return jdbcTemplate;

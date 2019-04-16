@@ -17,7 +17,7 @@ import com.svmrm.notify.HolidayNotify.dao.HolidayDAOImpl;
 public class App 
 
 {
-	@Autowired
+	
 		private HolidayDAOImpl holidayDAOImpl;
 	
 	
@@ -33,9 +33,8 @@ public class App
         System.out.println( "Hello World!" );
         // loads the context xml and uses getBean() to retrieve the bean
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("com/svmrm/notify/HolidayNotify/springconfig.xml");
-        //HolidayDAO playerDAO = (HolidayDAO) applicationContext.getBean("holidayDAO");
-        App app=new App();
-        app.getHolidayDAOImpl().getHoliday(new Date(1000l));
+        HolidayDAOImpl playerDAO = (HolidayDAOImpl) applicationContext.getBean("holidayDAOImpl");
+        playerDAO.getHoliday(new Date(1000l));
  
     }
 }
