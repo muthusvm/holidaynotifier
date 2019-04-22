@@ -7,6 +7,6 @@ import com.svmrm.notify.HolidayNotify.model.HolidayMaster;
 
 public interface HolidayDAO {
 	
-	public List<HolidayMaster> getHoliday(Date date);
+	public List<HolidayMaster> getHoliday(String date);
 
 }

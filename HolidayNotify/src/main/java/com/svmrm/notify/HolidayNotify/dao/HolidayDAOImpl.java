@@ -21,10 +21,21 @@ public class HolidayDAOImpl implements HolidayDAO {
 			return jdbcTemplate;
 		}
 
-	public List<HolidayMaster> getHoliday(Date date) {
+	public List<HolidayMaster> getHoliday(String date) {
 		// TODO Auto-generated method stub
-			String query="select id,area_code,area_name,holiday_date,holiday_descryption,holiday_type from travels_area_holiday_master where holiday_date=?";
-			List<HolidayMaster> holidayMasters=	getJdbcTemplate().query(query, new Object[]{date},new BeanPropertyRowMapper(HolidayMaster.class));
+		//List holidayMasters=null;
+		List<HolidayMaster> holidayMasters =null;
+		try{
+			System.out.println("Test");
+			String query="select id,area_code,area_name,holiday_date,holiday_desc,holiday_type from TEST_HM where trunc(holiday_date)=TO_DATE('"+date+"', 'DD/MM/YYYY')";
+			//String query="select h_id,area_code,area_name,holiday_date,holiday_descryption,holiday_type from TEST_HM ";
+			 holidayMasters=	getJdbcTemplate().query(query, new BeanPropertyRowMapper(HolidayMaster.class));
+			//List holidayMasters=	getJdbcTemplate().queryForList(query, new Object[]{date});
+			 ///holidayMasters=(List)	getJdbcTemplate().queryForList(query );
+
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 			return holidayMasters;
 	
 	}
